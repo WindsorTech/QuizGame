@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 var questions = [{
     question: "1. What is the largest country in the world?",
     choices: ["China", "Russia", "United States", "Canada"],
@@ -37,7 +39,7 @@ var correctAnswers = 0;
 var wrongAnswers = 0;
 var quizOver = false;
 
-$(document).ready(function () {
+
 
     $(document).find(".nextButton").hide();
 
@@ -95,7 +97,7 @@ $(document).ready(function () {
 
     });
 
-});
+
 
 function countDown (secs,elem) {
                 var element = document.getElementById(elem);
@@ -157,3 +159,6 @@ function hideScore() {
     $(document).find(".choiceList").show();
 
 }
+
+
+});
