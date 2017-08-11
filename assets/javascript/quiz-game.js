@@ -38,20 +38,31 @@ var currentQuestion = 0;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var quizOver = false;
+var secs=30;
 
 
+    $(".nextButton").hide();
 
-    $(document).find(".nextButton").hide();
+    $(".start-button").click(function(){
 
-    $(this).find("#start-now").on("click", function () {
-    // Display the first question
-    displayCurrentQuestion();
-    $(this).find(".quizMessage").hide();
-    $(document).find("#start-now").hide();
-    $(document).find(".nextButton").show();
-    countDown(30,"timer-zone");
+        displayCurrentQuestion();
+
+        $(".quizMessage").hide();
+        $(".start-button").hide();
+        $(".nextButton").show();
+
+        setTimeout(timer, 5000)
+
 
     });
+
+
+function timer() {
+
+ $('.timer-zone').text("ola cuzao");
+}
+
+//===============================================//
 
     // On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
@@ -93,24 +104,11 @@ var quizOver = false;
             hideScore();
         }
 
-        countDown(30,"timer-zone"); //Restart 30 sec. count for next question
+        countDown("timer-zone"); //Restart 30 sec. count for next question
 
     });
 
 
-
-function countDown (secs,elem) {
-                var element = document.getElementById(elem);
-                element.innerHTML = "Time Remaining: " +secs+" seconds";
-                if (secs < 1) {
-                    clearTimeOut(timer);
-                    element.innerHTML = '<h2>Countdown Complete!</h2>';
-                    element.innerHTML += '<a href="#">Click here</a>';
-                }
-                secs--;
-                var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
-
-            }
 
 // This displays the current question AND the choices
 function displayCurrentQuestion() {
@@ -162,3 +160,4 @@ function hideScore() {
 
 
 });
+
