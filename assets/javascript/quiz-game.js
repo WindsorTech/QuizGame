@@ -38,29 +38,37 @@ var currentQuestion = 0;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var quizOver = false;
-var secs=30;
+var secs = 16;
 
 
     $(".nextButton").hide();
 
     $(".start-button").click(function(){
 
-        displayCurrentQuestion();
+        timer();
 
         $(".quizMessage").hide();
         $(".start-button").hide();
         $(".nextButton").show();
 
-        setTimeout(timer, 5000)
-
+        displayCurrentQuestion();
 
     });
 
+    function timer() {
 
-function timer() {
+        setInterval(function() {
+            secs--;
 
- $('.timer-zone').text("ola cuzao");
-}
+            $('.timer-zone').text("Time Remaining: " +secs+" seconds");
+            // if (counter == 5) {
+            //     // Display a login box
+            //     clearInterval(interval);
+            // }
+        }, 1000);
+
+    }
+
 
 //===============================================//
 
