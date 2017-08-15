@@ -3,6 +3,8 @@ $(document).ready(function () {
 var questions = [{
     question: "1. What is the largest country in the world?",
     choices: ["China", "Russia", "United States", "Canada"],
+    giphy: "<img src='https://media.giphy.com/media/vE4LYvPFy7tLy/giphy.gif' width=290 height=200>",
+    text: "Russia is the world's largest country, with a total area of 17.1 million square kilometers.",
     correctAnswer: 1
 }, {
     question: "2. What is the approximate population of India?",
@@ -38,9 +40,10 @@ var currentQuestion = 0;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var quizOver = false;
-var secs = 16;
+var secs = 15;
 
 
+    $(".checkButton").hide();
     $(".nextButton").hide();
 
     $(".start-button").click(function(){
@@ -49,11 +52,20 @@ var secs = 16;
 
         $(".quizMessage").hide();
         $(".start-button").hide();
-        $(".nextButton").show();
+        $(".checkButton").show();
+        $(".answer-container").hide();
 
         displayCurrentQuestion();
 
     });
+
+    $(".checkButton").click(function(){
+
+        checkAnswer();
+
+    });
+
+//====================== FUNCTIONS ================//    
 
     function timer() {
 
@@ -61,67 +73,22 @@ var secs = 16;
             secs--;
 
             $('.timer-zone').text("Time Remaining: " +secs+" seconds");
-            // if (counter == 5) {
-            //     // Display a login box
-            //     clearInterval(interval);
-            // }
+
+            if (secs == -1) {
+                
+                checkAnswer();
+                
+            }
         }, 1000);
 
     }
 
-
-//===============================================//
-
-    // On clicking next, display the next question
-    $(this).find(".nextButton").on("click", function () {
-
-        if (!quizOver) {
-
-            value = $("input[type='radio']:checked").val();
-
-            if (value == undefined) {
-                $(document).find(".quizMessage").text("Please select an answer above");
-                $(document).find(".quizMessage").show();
-            } else {
-                // TODO: Remove any message -> not sure if this is efficient to call this each time....
-                $(document).find(".quizMessage").hide();
-
-                if (value == questions[currentQuestion].correctAnswer) {
-                    correctAnswers++;
-                }else {
-                    wrongAnswers++;
-                }
-
-                currentQuestion++; // Since we have already displayed the first question on DOM ready
-                if (currentQuestion < questions.length) {
-                    displayCurrentQuestion();
-                } else {
-                    displayScore();
-                    //                    $(document).find(".nextButton").toggle();
-                    //                    $(document).find(".playAgainButton").toggle();
-                    // Change the text in the next button to ask if user wants to play again
-                    $(document).find(".nextButton").text("Play Again?");
-                    quizOver = true;
-                }
-            }
-        } else { // quiz is over and clicked the next button (which now displays 'Play Again?'
-            quizOver = false;
-            $(document).find(".nextButton").text("Next Question");
-            resetQuiz();
-            displayCurrentQuestion();
-            hideScore();
-        }
-
-        countDown("timer-zone"); //Restart 30 sec. count for next question
-
-    });
-
-
+//========================================================//
 
 // This displays the current question AND the choices
 function displayCurrentQuestion() {
 
-    console.log("In display current Question");
+    $('.timer-zone').text("Time Remaining: 15 seconds");
 
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find(".quizContainer > .question");
@@ -135,11 +102,83 @@ function displayCurrentQuestion() {
     $(choiceList).find("ul").remove();
 
     var choice;
+
     for (i = 0; i < numChoices; i++) {
         choice = questions[currentQuestion].choices[i];
-        $('<ul><input type="radio" value=' + i + ' name="dynradio" />' + choice + '</ul>').appendTo(choiceList);
+        $('<ul><input type="radio" value=' + i + ' name="dynradio" /> ' + choice + '</ul>').appendTo(choiceList);
     }
 }
+
+
+//========================================================//
+
+    function checkAnswer() {
+
+        // Get input choice from user
+        value = $("input[type='radio']:checked").val();
+
+        $(".answer-container").show();
+
+            // If the user has not chosen any options, tell him to do so
+            if (value == undefined) {
+
+                $(".quizMessage").text("Please select an answer above");
+                $(".quizMessage").show();
+
+            } else {
+                
+                // if the user answer is correct     
+                if (value == questions[currentQuestion].correctAnswer) {
+
+                    correctAnswers++;
+
+                    $(".timer-zone").hide();
+                    $(".question").hide();
+                    $(".choiceList").hide();
+                    $(".quizMessage").hide();
+
+                    $(".answer-msg").html("<font color='#00b300'>CORRECT ANSWER!</font>");
+                    $(".answer-msg2").html(questions[currentQuestion].text);
+                    $(".answer-gif").html(questions[currentQuestion].giphy);
+
+                    $(".checkButton").hide();
+                    $(".nextButton").show();
+
+                } else { // if the user answer is wrong
+
+                    wrongAnswers++;
+
+                    $(".timer-zone").hide();
+                    $(".question").hide();
+                    $(".choiceList").hide();
+                    $(".quizMessage").hide();
+
+                    $(".answer-msg").html("<font color='#ff0000'>WRONG ANSWER!</font>");
+                    $(".answer-msg2").html(questions[currentQuestion].text);
+                    $(".answer-gif").html(questions[currentQuestion].giphy);
+
+                    $(".checkButton").hide();
+                    $(".nextButton").show();
+                }
+
+                //currentQuestion++; // Since we have already displayed the first question on DOM ready
+
+                if (currentQuestion < questions.length) {
+                    displayCurrentQuestion();
+                } else {
+                    displayScore();
+                    //                    $(document).find(".nextButton").toggle();
+                    //                    $(document).find(".playAgainButton").toggle();
+                    // Change the text in the next button to ask if user wants to play again
+                    $(document).find(".nextButton").text("Play Again?");
+                    quizOver = true;
+                }
+            }
+        
+
+    }
+
+//================================================//
 
 function resetQuiz() {
     currentQuestion = 0;
