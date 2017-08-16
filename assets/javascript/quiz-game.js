@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+// Game Variables
+
+// Array of objects with questions data
 var questions = [{
     question: "1. What is the largest country in the world?",
     choices: ["China", "Russia", "United States", "Canada"],
@@ -41,54 +44,57 @@ var correctAnswers = 0;
 var wrongAnswers = 0;
 var quizOver = false;
 var secs = 15;
-var countdown;
 
-
-
-
+    // Hide the Check and Next buttons
     $(".checkButton").hide();
     $(".nextButton").hide();
 
+    // On the click of the Start Button - start the game
     $(".start-button").click(function(){
 
-        timer();
-
-        $(".quizMessage").hide();
+        // Set up game environment
         $(".start-button").hide();
+        $(".quizMessage").hide();
         $(".checkButton").show();
         $(".answer-container").hide();
 
+        // Call the function to display first question
         displayCurrentQuestion();
-
     });
 
+    // On the click of the Check button
     $(".checkButton").click(function(){
 
+        // Get input answer from user
         value = $("input[type='radio']:checked").val();
 
+            // if the user did not select any options, tell him to do so
            if (value == undefined) {
 
-                $(".quizMessage").text("Please select an answer above");
+                $(".quizMessage").html("<font color='#2f6ce0'>Please select an answer above</font>");
                 $(".quizMessage").show();
 
-            } else {
+            } else { //If an answer was selected, call the function to check the answer
 
                 checkAnswer();
-
             }
-
     });
 
-//====================== FUNCTIONS ================//    
+//====================== Game Functions ================//  
 
+    // Timer Function
     function timer() {
 
          setInterval(function() {
+
+            // Countdown seconds
             secs--;
 
+            // Display timer on screen
             $('.timer-zone').text("Time Remaining: " +secs+" seconds");
 
-            if (secs == -1) {
+            // If the seconds reach zero, check the answer
+            if (secs == 0) {
 
             checkAnswer();
                 
@@ -100,10 +106,12 @@ var countdown;
 
 //========================================================//
 
-// This displays the current question AND the choices
+// Function to display current question and choices
 function displayCurrentQuestion() {
 
     $('.timer-zone').text("Time Remaining: 15 seconds");
+
+    timer();
 
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find(".quizContainer > .question");
@@ -133,6 +141,8 @@ function displayCurrentQuestion() {
         value = $("input[type='radio']:checked").val();
 
         $(".answer-container").show();
+
+        secs = 0;
                 
                 // if the user answer is correct     
                 if (value == questions[currentQuestion].correctAnswer) {
@@ -166,24 +176,38 @@ function displayCurrentQuestion() {
 
                     $(".checkButton").hide();
                     $(".nextButton").show();
-                }
+                }   
 
-                //currentQuestion++; // Since we have already displayed the first question on DOM ready
-
-                if (currentQuestion < questions.length) {
-                    displayCurrentQuestion();
-                } else {
-                    displayScore();
-                    //                    $(document).find(".nextButton").toggle();
-                    //                    $(document).find(".playAgainButton").toggle();
-                    // Change the text in the next button to ask if user wants to play again
-                    $(document).find(".nextButton").text("Play Again?");
-                    quizOver = true;
-                }
-            
-        
+                $(".nextButton").click(function(){
+                    clearInterval(timer);
+                    nextQuestion();
+                });   
 
     }
+
+    //==================================================//
+
+    function nextQuestion() {
+
+            currentQuestion++;
+
+            secs = 15;
+
+            // Set up game environment
+            $(".timer-zone").show();
+            $(".start-button").hide();
+            $(".quizMessage").hide();
+            $(".question").show();
+            $(".choiceList").show();
+            $(".checkButton").show();
+            $(".answer-container").hide();
+            $(".nextButton").hide();
+
+            // Call the function to display first question
+            displayCurrentQuestion();
+
+    }
+
 
 //================================================//
 
