@@ -41,6 +41,9 @@ var correctAnswers = 0;
 var wrongAnswers = 0;
 var quizOver = false;
 var secs = 15;
+var countdown;
+
+
 
 
     $(".checkButton").hide();
@@ -61,7 +64,18 @@ var secs = 15;
 
     $(".checkButton").click(function(){
 
-        checkAnswer();
+        value = $("input[type='radio']:checked").val();
+
+           if (value == undefined) {
+
+                $(".quizMessage").text("Please select an answer above");
+                $(".quizMessage").show();
+
+            } else {
+
+                checkAnswer();
+
+            }
 
     });
 
@@ -69,19 +83,20 @@ var secs = 15;
 
     function timer() {
 
-        setInterval(function() {
+         setInterval(function() {
             secs--;
 
             $('.timer-zone').text("Time Remaining: " +secs+" seconds");
 
             if (secs == -1) {
+
+            checkAnswer();
                 
-                checkAnswer();
-                
-            }
+            } 
         }, 1000);
 
     }
+
 
 //========================================================//
 
@@ -118,14 +133,6 @@ function displayCurrentQuestion() {
         value = $("input[type='radio']:checked").val();
 
         $(".answer-container").show();
-
-            // If the user has not chosen any options, tell him to do so
-            if (value == undefined) {
-
-                $(".quizMessage").text("Please select an answer above");
-                $(".quizMessage").show();
-
-            } else {
                 
                 // if the user answer is correct     
                 if (value == questions[currentQuestion].correctAnswer) {
@@ -173,7 +180,7 @@ function displayCurrentQuestion() {
                     $(document).find(".nextButton").text("Play Again?");
                     quizOver = true;
                 }
-            }
+            
         
 
     }
