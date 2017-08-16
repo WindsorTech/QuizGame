@@ -6,16 +6,20 @@ $(document).ready(function () {
 var questions = [{
     question: "1. What is the largest country in the world?",
     choices: ["China", "Russia", "United States", "Canada"],
-    giphy: "<img src='https://media.giphy.com/media/vE4LYvPFy7tLy/giphy.gif' width=290 height=200>",
-    text: "Russia is the world's largest country, with a total area of 17.1 million square kilometers.",
+    giphy: "<img src='https://media.giphy.com/media/yqj1Nq2LDeWPu/giphy.gif' width=290 height=200>",
+    text: "Russia is the world's largest country, with a total area of 17.1 million square kilometers",
     correctAnswer: 1
 }, {
     question: "2. What is the approximate population of India?",
     choices: ["750 million", "900 million", "1 billion", "1.2 billion"],
+    giphy: "<img src='https://media.giphy.com/media/qj9LH3O2Td1Kg/giphy.gif' width=290 height=200>",
+    text: "India's current population is approximately 1.2 billion people",
     correctAnswer: 3
 }, {
-    question: "3. Who is the current president of the United States?",
-    choices: ["Hillary Clinton", "Donald Trump", "Barack Obama", "George W Bush"],
+    question: "3. What is the capital city of Australia?",
+    choices: ["Melbourne", "Sydney", "Canberra", "Adelaide"],
+    giphy: "<img src='https://media.giphy.com/media/luFnd5dLvB4pW/giphy.gif' width=290 height=200>",
+    text: "Canberra is the capital of Australia",
     correctAnswer: 2
 }, {
     question: "4. In what continent is Chile located?",
@@ -57,6 +61,8 @@ var secs = 15;
         $(".quizMessage").hide();
         $(".checkButton").show();
         $(".answer-container").hide();
+
+        timer();
 
         // Call the function to display first question
         displayCurrentQuestion();
@@ -110,8 +116,6 @@ var secs = 15;
 function displayCurrentQuestion() {
 
     $('.timer-zone').text("Time Remaining: 15 seconds");
-
-    timer();
 
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find(".quizContainer > .question");
@@ -191,7 +195,8 @@ function displayCurrentQuestion() {
 
             currentQuestion++;
 
-            secs = 15;
+            $('.timer-zone').text("Time Remaining: 15 seconds");
+            secs = 16;
 
             // Set up game environment
             $(".timer-zone").show();
