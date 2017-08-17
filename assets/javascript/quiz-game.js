@@ -24,22 +24,32 @@ var questions = [{
 }, {
     question: "4. In what continent is Chile located?",
     choices: ["Central America", "Asia", "South America", "Europe"],
+    giphy: "<img src='https://media.giphy.com/media/VHuvKNvDvIszC/giphy.gif' width=290 height=200>",
+    text: "Chile is located on the western coast of South America",
     correctAnswer: 2
 }, {
     question: "5. What is the currency of Brazil?",
     choices: ["Brazilian Real", "Brazilian Peso", "Brazilian Dollar", "Brazilian Florin"],
+    giphy: "<img src='https://media.giphy.com/media/GR7S6M8eUQwKY/giphy.gif' width=290 height=200>",
+    text: "Brazil's official currency is called Real",
     correctAnswer: 0
 }, {
     question: "6. Between what years did World War I take place?",
     choices: ["1904 - 1908", "1914 - 1918", "1929-1935", "1939-1945"],
+    giphy: "<img src='https://media.giphy.com/media/B5wsiHIFt2QkU/giphy.gif' width=290 height=200>",
+    text: "World War I happened from 1914 to 1918",
     correctAnswer: 1
 }, {
     question: "7. What is the world's most popular sport?",
     choices: ["Basketball", "Football", "Baseball", "Soccer"],
+    giphy: "<img src='https://media.giphy.com/media/2HavnYT1BfENa/giphy.gif' width=290 height=200>",
+    text: "Soccer is the most popular sport in the world",
     correctAnswer: 3
 }, {
     question: "8. What is Earth's approximate age?",
     choices: ["2.3 billion years", "3.6 billion years", "4.5 billion years", "5.2 billion years"],
+    giphy: "<img src='https://media.giphy.com/media/rVz1J8spLtUtO/giphy.gif' width=290 height=200>",
+    text: "Our planet Earth is 4.5 billion years old",
     correctAnswer: 2
 }];
 
@@ -47,7 +57,7 @@ var currentQuestion = 0;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var quizOver = false;
-var secs = 15;
+var secs = 10;
 
     // Hide the Check and Next buttons
     $(".checkButton").hide();
@@ -62,6 +72,7 @@ var secs = 15;
         $(".checkButton").show();
         $(".answer-container").hide();
 
+        // Start the 15s timer
         timer();
 
         // Call the function to display first question
@@ -115,7 +126,7 @@ var secs = 15;
 // Function to display current question and choices
 function displayCurrentQuestion() {
 
-    $('.timer-zone').text("Time Remaining: 15 seconds");
+    $('.timer-zone').text("Time Remaining: 10 seconds");
 
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find(".quizContainer > .question");
@@ -180,10 +191,12 @@ function displayCurrentQuestion() {
 
                     $(".checkButton").hide();
                     $(".nextButton").show();
-                }   
+                } 
+
+                currentQuestion++;  
 
                 $(".nextButton").click(function(){
-                    clearInterval(timer);
+                    
                     nextQuestion();
                 });   
 
@@ -193,10 +206,8 @@ function displayCurrentQuestion() {
 
     function nextQuestion() {
 
-            currentQuestion++;
-
-            $('.timer-zone').text("Time Remaining: 15 seconds");
-            secs = 16;
+            $('.timer-zone').text("Time Remaining: 10 seconds");
+            secs = 11;
 
             // Set up game environment
             $(".timer-zone").show();
@@ -216,30 +227,30 @@ function displayCurrentQuestion() {
 
 //================================================//
 
-function resetQuiz() {
-    currentQuestion = 0;
-    correctAnswers = 0;
-    wrongAnswers = 0;
-    hideScore();
-}
+// function resetQuiz() {
+//     currentQuestion = 0;
+//     correctAnswers = 0;
+//     wrongAnswers = 0;
+//     hideScore();
+// }
 
-function displayScore() {
-    $(document).find(".quizContainer > .result").text("Correct Answers: " + correctAnswers);
-    $(document).find(".quizContainer > .result").show();
-    $(document).find(".quizContainer > .result-two").text("Wrong Answers: " + wrongAnswers);
-    $(document).find(".quizContainer > .result-two").show();
-    $(document).find(".question").hide();
-    $(document).find(".choiceList").hide();
+// function displayScore() {
+//     $(document).find(".quizContainer > .result").text("Correct Answers: " + correctAnswers);
+//     $(document).find(".quizContainer > .result").show();
+//     $(document).find(".quizContainer > .result-two").text("Wrong Answers: " + wrongAnswers);
+//     $(document).find(".quizContainer > .result-two").show();
+//     $(document).find(".question").hide();
+//     $(document).find(".choiceList").hide();
 
-}
+// }
 
-function hideScore() {
-    $(document).find(".result").hide();
-    $(document).find(".result-two").hide();
-    $(document).find(".question").show();
-    $(document).find(".choiceList").show();
+// function hideScore() {
+//     $(document).find(".result").hide();
+//     $(document).find(".result-two").hide();
+//     $(document).find(".question").show();
+//     $(document).find(".choiceList").show();
 
-}
+// }
 
 
 });

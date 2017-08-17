@@ -47,6 +47,10 @@ h2 {
 
 }
 
+.choiceList {
+	margin-top: 15px;
+}
+
 .answer-container {
 	padding-top: 10px;
 	text-align: center;
