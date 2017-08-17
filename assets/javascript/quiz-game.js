@@ -62,6 +62,7 @@ var secs = 10;
     // Hide the Check and Next buttons
     $(".checkButton").hide();
     $(".nextButton").hide();
+    $(".resultButton").hide();
 
     // On the click of the Start Button - start the game
     $(".start-button").click(function(){
@@ -195,9 +196,17 @@ function displayCurrentQuestion() {
 
                 currentQuestion++;  
 
+                  if (currentQuestion == 8) {
+                        $(".nextButton").hide();
+                        $(".resultButton").show();
+                    }
+
                 $(".nextButton").click(function(){
-                    
-                    nextQuestion();
+                    nextQuestion();                                     
+                });
+
+                $(".resultButton").click(function(){
+                    finalResult();                                     
                 });   
 
     }
@@ -223,6 +232,24 @@ function displayCurrentQuestion() {
             displayCurrentQuestion();
 
     }
+
+//======================================================//
+
+function finalResult() {
+
+        $(".timer-zone").hide();
+        $(".start-button").hide();
+        $(".quizMessage").hide();
+        $(".question").hide();
+        $(".choiceList").hide();
+        $(".checkButton").hide();
+        $(".answer-container").hide();
+        $(".nextButton").hide();
+
+        $(".result").text("Correct Answers: " + correctAnswers);
+        $(".result-two").text("Wrong Answers: " + wrongAnswers);
+
+}
 
 
 //================================================//
