@@ -47,6 +47,13 @@ h2 {
 	margin-left: 4%;
 }
 
+.playAgainButton {
+	font-size: 20px;
+	background-color: #4286f4;
+	color: white;
+	margin-left: 4%;
+}
+
 .quizContainer {
 	padding-top: 20px;
 	text-align: center;

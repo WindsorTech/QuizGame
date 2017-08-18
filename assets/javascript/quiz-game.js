@@ -42,14 +42,14 @@ var questions = [{
 }, {
     question: "7. What is the world's most popular sport?",
     choices: ["Basketball", "Football", "Baseball", "Soccer"],
-    giphy: "<img src='https://media.giphy.com/media/2HavnYT1BfENa/giphy.gif' width=290 height=200>",
+    giphy: "<img src='https://media.giphy.com/media/l2JhGDtOnOyeqDM4w/giphy.gif' width=290 height=200>",
     text: "Soccer is the most popular sport in the world",
     correctAnswer: 3
 }, {
     question: "8. What is Earth's approximate age?",
     choices: ["2.3 billion years", "3.6 billion years", "4.5 billion years", "5.2 billion years"],
     giphy: "<img src='https://media.giphy.com/media/rVz1J8spLtUtO/giphy.gif' width=290 height=200>",
-    text: "Our planet Earth is 4.5 billion years old",
+    text: "Our planet Earth is approximately 4.5 billion years old",
     correctAnswer: 2
 }];
 
@@ -63,6 +63,7 @@ var secs = 10;
     $(".checkButton").hide();
     $(".nextButton").hide();
     $(".resultButton").hide();
+    $(".playAgainButton").hide();
 
     // On the click of the Start Button - start the game
     $(".start-button").click(function(){
@@ -245,39 +246,29 @@ function finalResult() {
         $(".checkButton").hide();
         $(".answer-container").hide();
         $(".nextButton").hide();
+        $(".resultButton").hide();
+        $(".playAgainButton").show();
 
         $(".result").text("Correct Answers: " + correctAnswers);
         $(".result-two").text("Wrong Answers: " + wrongAnswers);
+
+        if (correctAnswers <= 3 ) {
+
+        } else if (correctAnswers > 3 && correctAnswers <= 6) {
+
+        } else if (correctAnswers > 6) {
+            
+        }
 
 }
 
 
 //================================================//
 
-// function resetQuiz() {
-//     currentQuestion = 0;
-//     correctAnswers = 0;
-//     wrongAnswers = 0;
-//     hideScore();
-// }
+function restartGame() {
 
-// function displayScore() {
-//     $(document).find(".quizContainer > .result").text("Correct Answers: " + correctAnswers);
-//     $(document).find(".quizContainer > .result").show();
-//     $(document).find(".quizContainer > .result-two").text("Wrong Answers: " + wrongAnswers);
-//     $(document).find(".quizContainer > .result-two").show();
-//     $(document).find(".question").hide();
-//     $(document).find(".choiceList").hide();
 
-// }
-
-// function hideScore() {
-//     $(document).find(".result").hide();
-//     $(document).find(".result-two").hide();
-//     $(document).find(".question").show();
-//     $(document).find(".choiceList").show();
-
-// }
+}
 
 
 });
