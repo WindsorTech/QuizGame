@@ -244,19 +244,25 @@ function finalResult() {
         $(".question").hide();
         $(".choiceList").hide();
         $(".checkButton").hide();
-        $(".answer-container").hide();
         $(".nextButton").hide();
         $(".resultButton").hide();
         $(".playAgainButton").show();
+        $(".answer-container").show();
 
-        $(".result").text("Correct Answers: " + correctAnswers);
-        $(".result-two").text("Wrong Answers: " + wrongAnswers);
+        $(".answer-msg").text("RESULTS");
+        $(".answer-msg2").html("<p>Correct Answers: " + correctAnswers + "</p><p>Wrong Answers: " + wrongAnswers + "</p>");
 
         if (correctAnswers <= 3 ) {
 
+            $(".answer-gif").text("You need to improve your world knowledge, think outside the box!");
+
         } else if (correctAnswers > 3 && correctAnswers <= 6) {
 
+            $(".answer-gif").text("You did a good job, but keep being curious and you will get far!");
+
         } else if (correctAnswers > 6) {
+
+            $(".answer-gif").text("You are a world master! Have you thought about running for president?!");
             
         }
 
