@@ -29,14 +29,14 @@ var questions = [{
     correctAnswer: 2
 }, {
     question: "5. What is the currency of Brazil?",
-    choices: ["Brazilian Real", "Brazilian Peso", "Brazilian Dollar", "Brazilian Florin"],
+    choices: ["Brazilian Real", "Brazilian Peso", "Brazilian Dollar", "Brazilian Crown"],
     giphy: "<img src='https://media.giphy.com/media/GR7S6M8eUQwKY/giphy.gif' width=290 height=200>",
     text: "Brazil's official currency is called Real",
     correctAnswer: 0
 }, {
     question: "6. Between what years did World War I take place?",
     choices: ["1904 - 1908", "1914 - 1918", "1929-1935", "1939-1945"],
-    giphy: "<img src='https://media.giphy.com/media/B5wsiHIFt2QkU/giphy.gif' width=290 height=200>",
+    giphy: "<img src='https://media.giphy.com/media/hsTBcU33SmtmE/giphy.gif' width=290 height=200>",
     text: "World War I happened from 1914 to 1918",
     correctAnswer: 1
 }, {
@@ -141,6 +141,7 @@ function displayCurrentQuestion() {
     // Remove all current <li> elements (if any)
     $(choiceList).find("ul").remove();
 
+    // Loop through the numChoices array to create answer options
     var choice;
 
     for (i = 0; i < numChoices; i++) {
@@ -152,6 +153,7 @@ function displayCurrentQuestion() {
 
 //========================================================//
 
+    // Function to check if user answer is right or wrong
     function checkAnswer() {
 
         // Get input choice from user
@@ -238,6 +240,8 @@ function displayCurrentQuestion() {
 
 function finalResult() {
 
+        secs = 0;
+
         $(".timer-zone").hide();
         $(".start-button").hide();
         $(".quizMessage").hide();
@@ -252,19 +256,27 @@ function finalResult() {
         $(".answer-msg").text("RESULTS");
         $(".answer-msg2").html("<p>Correct Answers: " + correctAnswers + "</p><p>Wrong Answers: " + wrongAnswers + "</p>");
 
-        if (correctAnswers <= 3 ) {
+        if (correctAnswers <= 2 ) {
 
             $(".answer-gif").text("You need to improve your world knowledge, think outside the box!");
 
-        } else if (correctAnswers > 3 && correctAnswers <= 6) {
+        } else if (correctAnswers > 2 && correctAnswers <= 4) {
 
-            $(".answer-gif").text("You did a good job, but keep being curious and you will get far!");
+            $(".answer-gif").text("Good job, but the world believes you can do better next time!");
+
+        } else if (correctAnswers > 4 && correctAnswers <= 6) {
+
+            $(".answer-gif").text("Awesome job, keep being curious and you will conquer the world!");
 
         } else if (correctAnswers > 6) {
 
             $(".answer-gif").text("You are a world master! Have you thought about running for president?!");
             
         }
+
+        $(".playAgainButton").click(function(){
+                restartGame();                                     
+        });  
 
 }
 
@@ -273,9 +285,24 @@ function finalResult() {
 
 function restartGame() {
 
+    currentQuestion = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+
+
+    $(".timer-zone").show();
+    $(".question").show();
+    $(".choiceList").show();
+    $(".answer-container").hide();
+    $(".playAgainButton").hide();
+
+    nextQuestion();
 
 }
 
 
 });
+
+//========================================================
+//========================================================
 
