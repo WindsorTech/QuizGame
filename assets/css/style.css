@@ -98,7 +98,11 @@ h2 {
 	}
 
 	.btn-lg {
-	width: 80%;
+		width: 80%;
+	}
+
+	.answer-gif {
+		width: 90%;
 	}
 
 }
