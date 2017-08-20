@@ -96,6 +96,18 @@ h2 {
 	.container {
 		width: 95%;
 	}
+
+	.btn-lg {
+	width: 80%;
+	}
+
 }
 
-@media only screen and (min-width: 481px) and (max-width: 853px) {}
+@media only screen and (min-width: 481px) and (max-width: 853px) {
+
+.container {
+		width: 95%;
+	}
+
+
+}
