@@ -32,7 +32,8 @@ h2 {
 
 .choiceList {
 	margin-top: 15px;
-	margin-left: 5px;
+	text-align: center;
+	margin-left: -5%;
 }
 
 .answer-container {
@@ -98,7 +99,7 @@ h2 {
 	}
 
 	.btn-lg {
-		width: 80%;
+		width: 100%;
 	}
 
 	.gif-img {
