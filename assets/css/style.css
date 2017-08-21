@@ -102,6 +102,12 @@ h2 {
 		width: 80%;
 	}
 
+	.choiceList {
+		margin-top: 15px;
+		text-align: center;
+		margin-left: -3%;
+	}
+
 	.gif-img {
 		width: 100%;
 	}
@@ -115,12 +121,17 @@ h2 {
 	}
 
 .btn-lg {
-		width: 100%;
+		width: 70%;
+	}
+
+.choiceList {
+		margin-top: 15px;
+		text-align: center;
+		margin-left: -3%;
 	}
 
 .gif-img {
-		width: 100%;
+		width: 80%;
 	}
-
 
 }
