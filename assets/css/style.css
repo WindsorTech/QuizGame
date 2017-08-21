@@ -94,6 +94,15 @@ h2 {
 
 @media only screen and (max-width: 480px) {
 
+	.advert {
+    	display: none;
+	}
+
+	.mobile-advert {
+		display: block;
+		margin-top: 10px;
+	}	
+
 	.container {
 		width: 95%;
 	}
@@ -105,7 +114,7 @@ h2 {
 	.choiceList {
 		margin-top: 15px;
 		text-align: center;
-		margin-left: -9%;
+		margin-left: -15%;
 	}
 
 	.gif-img {
@@ -115,22 +124,30 @@ h2 {
 }
 
 @media only screen and (min-width: 481px) and (max-width: 853px) {
+	.advert {
+    	display: none;
+	}
 
-.container {
+	.mobile-advert {
+		display: block;
+		margin-top: 10px;
+	}	
+
+	.container {
 		width: 95%;
 	}
 
-.btn-lg {
+	.btn-lg {
 		width: 70%;
 	}
 
-.choiceList {
+	.choiceList {
 		margin-top: 15px;
 		text-align: center;
 		margin-left: -8%;
 	}
 
-.gif-img {
+	.gif-img {
 		width: 60%;
 	}
 
