@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
 // Game Variables
-
 var currentQuestion = 0;
 var correctAnswers = 0;
 var wrongAnswers = 0;
