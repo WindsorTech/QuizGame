@@ -11,6 +11,11 @@ h2 {
 	color: #a3a375;
 }
 
+.title a {
+	color:inherit;
+	text-decoration: none;
+}
+
 .advert {
 	margin-top: 10px;
 	margin-bottom: 10px;
