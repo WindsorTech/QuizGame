@@ -11,6 +11,11 @@ h2 {
 	color: #a3a375;
 }
 
+.advert {
+	margin-top: 15px;
+	margin-top: 15px;
+}
+
 .mobile-advert {
 	display: none;
 }
@@ -101,6 +106,7 @@ h2 {
 	.mobile-advert {
 		display: block;
 		margin-top: 10px;
+		margin-bottom: 10px;
 	}	
 
 	.container {
@@ -131,6 +137,7 @@ h2 {
 	.mobile-advert {
 		display: block;
 		margin-top: 10px;
+		margin-bottom: 10px;
 	}	
 
 	.container {
