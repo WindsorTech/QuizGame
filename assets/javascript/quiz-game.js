@@ -276,7 +276,7 @@ function displayCurrentQuestion() {
         $(".answer-msg").text("RESULTS");
         $(".answer-msg2").html("<p>Correct Answers: " + correctAnswers + "</p><p>Wrong Answers: " + wrongAnswers + "</p>");
 
-        // Display results advice, depending on user score
+        // Display results final advice, depending on user score
         if (correctAnswers <= 2 ) {
 
             $(".answer-gif").text("You need to improve your world knowledge, think outside the box!");
@@ -287,7 +287,7 @@ function displayCurrentQuestion() {
 
         } else if (correctAnswers > 4 && correctAnswers <= 6) {
 
-            $(".answer-gif").text("Awesome job, keep being curious and you will conquer the world!");
+            $(".answer-gif").text("Awesome job, stay curious and you will conquer the world!");
 
         } else if (correctAnswers > 6) {
 
