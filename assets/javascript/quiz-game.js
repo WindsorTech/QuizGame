@@ -34,13 +34,13 @@ var questions = [{
     correctAnswer: 2
 }, {
     question: "5. What is the currency of Brazil?",
-    choices: ["Brazilian Real", "Brazilian Peso", "Brazilian Dollar", "Brazilian Crown"],
+    choices: ["Brazilian Real", "Brazilian Dollar", "Brazilian Peso", "Brazilian Crown"],
     giphy: "<img class='gif-img' src='https://media.giphy.com/media/GR7S6M8eUQwKY/giphy.gif' width=290 height=200>",
     text: "Brazil's official currency is called Real",
     correctAnswer: 0
 }, {
     question: "6. Between what years did World War I take place?",
-    choices: ["1904 - 1908", "1914 - 1918", "1929-1935", "1939-1945"],
+    choices: ["1904 - 1908", "1914 - 1918", "1929 - 1935", "1939 - 1945"],
     giphy: "<img class='gif-img' src='https://media.giphy.com/media/hsTBcU33SmtmE/giphy.gif' width=290 height=200>",
     text: "World War I happened from 1914 to 1918",
     correctAnswer: 1
